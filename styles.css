@@ -1,5 +1,29 @@
-.mapHolder{
-  background-image: url(sprites/photo_2022-04-09_17-48-10.jpg);
-  height: 1280px;
-  width:1280px;
+.container {
+  display: grid;
+  place-items: center;
 }
+
+.mapHolder {
+  background-image: url(sprites/photo_2022-04-09_17-48-10.jpg);
+  background-size: contain;
+  height: 700px;
+  width: 700px;
+  position: relative;
+}
+
+#player-one {
+  position: absolute;
+  background-image: url(sprites/bruce.webp);
+  background-size: contain;
+  height: 80px;
+  width: 70px;
+}
+
+#player-two {
+  position: absolute;
+  background-image: url(sprites/acara.webp);
+  background-size: contain;
+  height: 80px;
+  width: 65px;
+}
+
