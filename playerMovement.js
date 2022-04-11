@@ -42,10 +42,10 @@ keys.subscribe((keyEvent) => {
 })
 
 const movePlayer = (id, movs) => {
-  if (movs.includes('up')) playerPos[id].y -= 3;
-  if (movs.includes('down')) playerPos[id].y += 3; 
-  if (movs.includes('right')) playerPos[id].x += 3;
-  if (movs.includes('left')) playerPos[id].x -= 3;
+  if (movs.includes('up') && playerPos[id].y > 0) playerPos[id].y -= 3;
+  if (movs.includes('down') && playerPos[id].y < 500 ) playerPos[id].y += 3; 
+  if (movs.includes('right') && playerPos[id].x < 630) playerPos[id].x += 3;
+  if (movs.includes('left') && playerPos[id].x > 0) playerPos[id].x -= 3;
   playerDoms[id].style.left = playerPos[id].x + 'px';
   playerDoms[id].style.top = playerPos[id].y + 'px';
 }
