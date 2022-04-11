@@ -74,3 +74,9 @@
   height: 120px;
   width: 80px;
 }
+
+.score {
+  font-size: 3rem;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
