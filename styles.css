@@ -75,7 +75,23 @@
   width: 80px;
 }
 
+#info {
+  display: flex;
+  width: 700px;
+}
+
 .score {
+  display: flex;
+  font-size: 3rem;
+  margin-right: 5 px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  align-self: flex-start;
+}
+
+.game-end-msg {
+  display: none;
+  margin-left: 100px ;
   font-size: 3rem;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;

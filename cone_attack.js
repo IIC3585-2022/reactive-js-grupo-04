@@ -17,7 +17,7 @@ const checkVertCollision = (ballStyle, playerPos) => {
     : false;
 };
 
-rxjs.timer(0, 600).subscribe(() => {
+const createScoop = rxjs.timer(0, 600).subscribe(() => {
   const element = document.createElement('div');
   var cone = cones[Math.floor(Math.random() * cones.length)];
   element.id = 'icecream_' + count;
@@ -31,7 +31,7 @@ rxjs.timer(0, 600).subscribe(() => {
   count += 1;
 });
 
-rxjs.timer(100, 100).subscribe(() => {
+const moveScoops = rxjs.timer(100, 100).subscribe(() => {
   icecreamBalls.forEach((id) => {
     const elem = document.getElementById(id);
     let y_pos = elem.style.bottom.replace('px', '');
@@ -41,7 +41,7 @@ rxjs.timer(100, 100).subscribe(() => {
   });
 });
 
-rxjs.timer(0, 100).subscribe((done) => {
+const deleteScoops = rxjs.timer(0, 100).subscribe((done) => {
   icecreamBalls.forEach((id) => {
     const elem = document.getElementById(id);
     let y_pos = elem.style.bottom.replace('px', '');
@@ -54,7 +54,14 @@ rxjs.timer(0, 100).subscribe((done) => {
   });
 });
 
-rxjs.timer(0, 200).subscribe(() => {
+const finishGame = () => {
+  createScoop.unsubscribe()
+  moveScoops.unsubscribe()
+  deleteScoops.unsubscribe()
+  document.getElementsByClassName("game-end-msg")[0].style.display = "flex";
+}
+
+const checkColisions = rxjs.timer(0, 100).subscribe(() => {
   const players = playerPos.map(player => ({...player, bot: 700 - 80 - player.y }))
   const ballsCollissioned = icecreamBalls.some((ballId) => {
     const ballStyle = document.getElementById(ballId).style;
@@ -67,6 +74,8 @@ rxjs.timer(0, 200).subscribe(() => {
 
     return playerOneCollision || playerTwoCollision;
   });
-
-  console.log(ballsCollissioned);
+  if(ballsCollissioned) {
+    checkColisions.unsubscribe()
+    finishGame()
+  }
 });
