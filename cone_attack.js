@@ -5,14 +5,14 @@ let count = 0;
 
 const checkHorCollision = (ballStyle, playerPos) => {
   const leftBall = parseInt(ballStyle.left.replace("px", ""));
-  return leftBall + 15 < playerPos.x + 65 && playerPos.x < leftBall + 45
+  return leftBall + 10 < playerPos.x + 65 && playerPos.x < leftBall + 50
     ? true
     : false;
 };
 
 const checkVertCollision = (ballStyle, playerPos) => {
   const bottom = parseInt(ballStyle.bottom.replace("px", ""));
-  return bottom + 15 < playerPos.bot + 80 && playerPos.bot < bottom + 70
+  return bottom + 15 < playerPos.bot + 80 && playerPos.bot < bottom + 75
     ? true
     : false;
 };
