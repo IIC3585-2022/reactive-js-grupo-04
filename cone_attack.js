@@ -17,6 +17,13 @@ const checkVertCollision = (ballStyle, playerPos) => {
     : false;
 };
 
+const checkForCollisions = (ballStyle, players) => {
+  const playerOneCollision = checkHorCollision(ballStyle, players[0]) && checkVertCollision(ballStyle, players[0])
+  const playerTwoCollision = checkHorCollision(ballStyle, players[1]) && checkVertCollision(ballStyle, players[1])
+
+  return playerOneCollision || playerTwoCollision;
+}
+
 const createScoop = rxjs.timer(0, 600).subscribe(() => {
   const element = document.createElement('div');
   var cone = cones[Math.floor(Math.random() * cones.length)];
@@ -65,14 +72,7 @@ const checkColisions = rxjs.timer(0, 100).subscribe(() => {
   const players = playerPos.map(player => ({...player, bot: 700 - 80 - player.y }))
   const ballsCollissioned = icecreamBalls.some((ballId) => {
     const ballStyle = document.getElementById(ballId).style;
-    const playerOneCollision =
-      checkHorCollision(ballStyle, players[0]) &&
-      checkVertCollision(ballStyle, players[0]);
-    const playerTwoCollision =
-      checkHorCollision(ballStyle, players[1]) &&
-      checkVertCollision(ballStyle, players[1]);
-
-    return playerOneCollision || playerTwoCollision;
+    return checkForCollisions(ballStyle, players);
   });
   if(ballsCollissioned) {
     checkColisions.unsubscribe()
