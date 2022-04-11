@@ -5,17 +5,24 @@ let count = 0;
 
 const checkHorCollision = (ballStyle, playerPos) => {
   const leftBall = parseInt(ballStyle.left.replace("px", ""));
-  return leftBall < playerPos.x + 65 && playerPos.x < leftBall + 60
+  return leftBall + 10 < playerPos.x + 65 && playerPos.x < leftBall + 50
     ? true
     : false;
 };
 
 const checkVertCollision = (ballStyle, playerPos) => {
   const bottom = parseInt(ballStyle.bottom.replace("px", ""));
-  return bottom < playerPos.bot + 80 && playerPos.bot < bottom + 80
+  return bottom + 15 < playerPos.bot + 80 && playerPos.bot < bottom + 75
     ? true
     : false;
 };
+
+const checkForCollisions = (ballStyle, players) => {
+  const playerOneCollision = checkHorCollision(ballStyle, players[0]) && checkVertCollision(ballStyle, players[0])
+  const playerTwoCollision = checkHorCollision(ballStyle, players[1]) && checkVertCollision(ballStyle, players[1])
+
+  return playerOneCollision || playerTwoCollision;
+}
 
 const createScoop = rxjs.timer(0, 600).subscribe(() => {
   const element = document.createElement('div');
@@ -65,14 +72,7 @@ const checkColisions = rxjs.timer(0, 100).subscribe(() => {
   const players = playerPos.map(player => ({...player, bot: 700 - 80 - player.y }))
   const ballsCollissioned = icecreamBalls.some((ballId) => {
     const ballStyle = document.getElementById(ballId).style;
-    const playerOneCollision =
-      checkHorCollision(ballStyle, players[0]) &&
-      checkVertCollision(ballStyle, players[0]);
-    const playerTwoCollision =
-      checkHorCollision(ballStyle, players[1]) &&
-      checkVertCollision(ballStyle, players[1]);
-
-    return playerOneCollision || playerTwoCollision;
+    return checkForCollisions(ballStyle, players);
   });
   if(ballsCollissioned) {
     checkColisions.unsubscribe()
