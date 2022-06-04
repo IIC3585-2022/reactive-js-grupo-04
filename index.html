@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reactive Javascript G04</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="map" class="mapHolder">
+        <div id="player-one"></div>
+        <div id="player-two"></div>
+        <div class="cone-container">
+          <div class="cone" id="cone-one"></div>
+          <div class="cone" id="cone-two"></div>
+          <div class="cone" id="cone-three"></div>
+          <div class="cone" id="cone-four"></div>
+          <div class="cone" id="cone-five"></div>
+          <div class="cone" id="cone-six"></div>
+          <div class="cone" id="cone-seven"></div>
+          <div class="cone" id="cone-eight"></div>
+        </div>
+
+      </div>
+      <div id="info">
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="game-end-msg">Game Over!</div>
+      </div>
+    </div>
+  </body>
+  <script src="game.js"></script>
+  <script src="playerMovement.js"></script>
+  <script src="cone_attack.js"></script>
+</html>

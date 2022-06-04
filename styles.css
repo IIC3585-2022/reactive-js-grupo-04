@@ -1,0 +1,98 @@
+.container {
+  display: grid;
+  place-items: center;
+}
+
+.mapHolder {
+  background-image: url(sprites/photo_2022-04-09_17-48-10.jpg);
+  background-size: contain;
+  height: 700px;
+  width: 700px;
+  position: relative;
+}
+
+#player-one {
+  position: absolute;
+  background-image: url(sprites/bruce.webp);
+  background-size: contain;
+  bottom: 0px;
+  top: 0px;
+  height: 80px;
+  width: 70px;
+}
+
+#player-two {
+  position: absolute;
+  background-image: url(sprites/acara.webp);
+  background-size: contain;
+  bottom: 0px;
+  top: 0px;
+  height: 80px;
+  width: 65px;
+}
+
+.cone-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  max-height: 100vh;
+  bottom: 0;
+  position: absolute;
+}
+
+.icecream_01 {
+  background-image: url(sprites/icecream_01.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 80px;
+  width: 60px;
+}
+
+.icecream_02 {
+  background-image: url(sprites/icecream_02.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 80px;
+  width: 60px;
+}
+
+.icecream_03 {
+  background-image: url(sprites/icecream_03.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 80px;
+  width: 60px;
+}
+
+.cone {
+  background-image: url(sprites/cone.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 120px;
+  width: 80px;
+}
+
+#info {
+  display: flex;
+  width: 700px;
+}
+
+.score {
+  display: flex;
+  font-size: 3rem;
+  margin-right: 5 px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  align-self: flex-start;
+}
+
+.game-end-msg {
+  display: none;
+  margin-left: 100px ;
+  font-size: 3rem;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
